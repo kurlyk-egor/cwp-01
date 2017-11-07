@@ -44,7 +44,7 @@ function setCopyright() {
 function createNewDir() {
     let mypath = process.argv[2] + '\\' + path.basename(process.argv[2]);
     fs.mkdir(mypath, (err) => {
-        if (err) {
+        if (err && err.code != 'EEXIST') {
             console.log("error while creating dir");
             throw err;
         }
