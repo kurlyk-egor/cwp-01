@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const txt = 'txt';
 
 let summary = 
 'const fs = require(\'fs\');\n'+
@@ -23,8 +24,7 @@ let summary =
 function createSummaryScript() {
     fs.appendFile(process.argv[2] + '\\summary.js', summary, (err) => {
         if (err) {
-            console.log(err);
-            console.log('Не удалось создать скрипт summary.js');
+            console.log('summary.js not created');
         }
     });
 }
