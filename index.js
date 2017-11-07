@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const txt = 'txt';
+let copyright;
 
 let summary = 
 'const fs = require(\'fs\');\n'+
@@ -29,4 +30,19 @@ function createSummaryScript() {
     });
 }
 
-createSummaryScript();
+function setCopyright() {
+    fs.readFile("config.json", (err, data) => {
+        if (err) {
+            console.error("Not finded copyright file");
+            return;
+        }
+        copyright = JSON.parse(data);
+        console.log(copyright);
+    });
+}
+
+//createSummaryScript();
+
+(() => {
+    setCopyright();
+})();
