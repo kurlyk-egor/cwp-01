@@ -20,4 +20,13 @@ let summary =
 '};\n'+
 'getFiles(__dirname);\n';
 
-console.log(summary);
+function createSummaryScript() {
+    fs.appendFile(process.argv[2] + '\\summary.js', summary, (err) => {
+        if (err) {
+            console.log(err);
+            console.log('Не удалось создать скрипт summary.js');
+        }
+    });
+}
+
+createSummaryScript();
